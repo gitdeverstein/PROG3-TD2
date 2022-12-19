@@ -2,6 +2,6 @@ create table player
 (
     id     serial,
     name    varchar,
-    number  index,
+    number  int,
     primary key (id)
 );

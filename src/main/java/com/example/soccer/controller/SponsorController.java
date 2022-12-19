@@ -14,7 +14,6 @@ import java.util.List;
 public class SponsorController {
     private final SponsorService service;
     private final SponsorRestMapper mapper;
-    private final SponsorResponse response;
     private List<SponsorResponse> SponsorEntity;
 
     @GetMapping("/sponsor")
