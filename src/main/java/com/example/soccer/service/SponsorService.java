@@ -14,4 +14,6 @@ public class SponsorService {
     public List<SponsorEntity> getSponsor() {
         return repository.findAll();
     }
+    public List<SponsorEntity> updateSponsor(List<SponsorEntity> toUpdate){return repository.saveAll(toUpdate);}
+    public List<SponsorEntity> createSponsor(List<SponsorEntity> toCreate){return repository.saveAll(toCreate);}
 }

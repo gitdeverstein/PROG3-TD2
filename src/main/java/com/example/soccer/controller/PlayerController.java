@@ -2,7 +2,9 @@ package com.example.soccer.controller;
 
 
 import com.example.soccer.controller.mapper.PlayerRestMapper;
+import com.example.soccer.controller.response.CreatePlayerResponse;
 import com.example.soccer.controller.response.PlayerResponse;
+import com.example.soccer.controller.response.UpdatePlayerResponse;
 import com.example.soccer.model.PlayerEntity;
 import com.example.soccer.service.PlayerService;
 import lombok.AllArgsConstructor;
@@ -23,9 +25,9 @@ public class PlayerController {
                 .toList();
     }
     @PostMapping("/players")
-    public List<PlayerResponse> createPlayers(@RequestBody List<PlayerResponse> toCreate) {
+    public List<PlayerResponse> createPlayers(@RequestBody List<CreatePlayerResponse> toCreate) {
         List<PlayerEntity> domain = toCreate.stream()
-                .map((PlayerResponse rest) -> mapper.toDomain(rest))
+                .map(mapper::toDomain)
                 .toList();
         return service.createPlayers(domain).stream()
                 .map(mapper::toRest)
@@ -33,7 +35,7 @@ public class PlayerController {
     }
 
     @PutMapping("/players")
-    public List<PlayerResponse> updatePlayers(@RequestBody List<PlayerResponse> toUpdate) {
+    public List<PlayerResponse> updatePlayers(@RequestBody List<UpdatePlayerResponse> toUpdate) {
         List<PlayerEntity> domain = toUpdate.stream()
                 .map(mapper::toDomain)
                 .toList();
