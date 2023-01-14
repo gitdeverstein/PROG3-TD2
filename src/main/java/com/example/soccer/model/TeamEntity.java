@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @Builder
@@ -17,4 +19,9 @@ public class TeamEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+
+    @OneToMany(mappedBy = "team")
+    private List<PlayerEntity> member;
+    @ManyToMany(mappedBy = "teamSponsored")
+    private List<SponsorEntity> sponsor;
 }

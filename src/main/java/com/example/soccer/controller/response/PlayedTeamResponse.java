@@ -5,13 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-public class TeamResponse {
-    private int id;
+public class PlayedTeamResponse {
+    private  int idTeam;
     private String name;
+    private int goals;
+    private int scorers;
 }

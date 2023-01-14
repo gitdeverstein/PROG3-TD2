@@ -13,5 +13,6 @@ import java.util.List;
 public class CreatePlayerResponse {
     private int id;
     private String name;
+    private int age;
     private List<PlayerEntity> players;
 }

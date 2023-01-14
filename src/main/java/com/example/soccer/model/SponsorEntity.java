@@ -1,10 +1,10 @@
 package com.example.soccer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -17,4 +17,12 @@ public class SponsorEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @ManyToMany
+    @JoinTable(
+            name = "haveSponsor",
+            joinColumns = @JoinColumn(name = "id_sponsor"),
+            inverseJoinColumns = @JoinColumn(name = "id_team")
+    )
+    @JsonIgnore
+    private List<TeamEntity> teamSponsored;
 }

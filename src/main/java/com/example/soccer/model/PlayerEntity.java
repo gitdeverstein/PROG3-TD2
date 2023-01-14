@@ -1,14 +1,12 @@
 package com.example.soccer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
 @Builder
+@Data
 @Table(name="player")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,5 +15,11 @@ public class PlayerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; // int=> 32bites
     private String name;
+    private int age;
     private int number;
+    private boolean isGuardian;
+    @ManyToOne
+    @JoinColumn(name = "id_team")
+    @JsonIgnore
+    private TeamEntity team;
 }
